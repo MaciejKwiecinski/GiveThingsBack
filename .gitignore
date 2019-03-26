@@ -1,2 +1,10 @@
+*.pyc
+*.pyo
+__pycache__
 *venv
-*.idea
+.idea
+localsettings.py
+.vscode
+node_modules
+package-lock.json
+project
