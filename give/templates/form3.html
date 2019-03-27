@@ -1,0 +1,61 @@
+{%extends 'baseform.html'%}
+{%block content%}
+    <form method="POST">
+        {%csrf_token%}
+        <h3>Lokalizacja:</h3>
+
+            <div class="form-group form-group--dropdown">
+              <select name="localization">
+                <option value="0">- wybierz -</option>
+                <option value="warsaw">Warszawa</option>
+                <option value="wroclaw">Wrocław</option>
+                <option value="poznan">Poznań</option>
+                <option value="gdansk">Gdańsk</option>
+              </select>
+            </div>
+
+            <div class="form-section">
+              <h4>Komu chcesz pomóc?</h4>
+              <div class="form-section--checkboxes">
+                <div class="form-group form-group--checkbox">
+                  <label>
+                    <input type="checkbox" name="help" value="0" />
+                    <span class="checkbox">dzieciom</span>
+                  </label>
+                </div>
+
+                <div class="form-group form-group--checkbox">
+                  <label>
+                    <input type="checkbox" name="help" value="1" />
+                    <span class="checkbox">samotnym matkom</span>
+                  </label>
+                </div>
+
+                <div class="form-group form-group--checkbox">
+                  <label>
+                    <input type="checkbox" name="help" value="2" />
+                    <span class="checkbox">bezdomnym</span>
+                  </label>
+                </div>
+
+                <div class="form-group form-group--checkbox">
+                  <label>
+                    <input type="checkbox" name="help" value="3" />
+                    <span class="checkbox">niepełnosprawnym</span>
+                  </label>
+                </div>
+
+                <div class="form-group form-group--checkbox">
+                  <label>
+                    <input type="checkbox" name="help" value="4" />
+                    <span class="checkbox">osobom starszym</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+        <div class="form-group form-group--buttons">
+              <button type="button" class="btn prev-step">Wstecz</button>
+              <input type="submit" class="btn" value="Potwierdzam">
+        </div>
+    </form>
+{%endblock content%}

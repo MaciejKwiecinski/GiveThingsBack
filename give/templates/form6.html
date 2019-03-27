@@ -1,0 +1,52 @@
+{%extends 'baseform.html'%}
+{%block content%}
+    <form method="POST">
+        {%csrf_token%}
+    <h3>Podsumowanie Twojej darowizny</h3>
+            <div class="summary">
+              <div class="form-section">
+                <h4>Oddajesz:</h4>
+                <ul>
+                  <li>
+                    <span class="icon icon-bag"></span>
+                    <span class="summary--text"
+                      >{{gift.quantity}} worki {{gift.type}} </span
+                    >
+                  </li>
+
+                  <li>
+                    <span class="icon icon-hand"></span>
+                    <span class="summary--text"
+                      >Dla fundacji {{gift.institution}}</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div class="form-section form-section--columns">
+                <div class="form-section--column">
+                  <h4>Adres odbioru:</h4>
+                  <ul>
+                    <li>{{address.address}}</li>
+                    <li>{{address.city}}</li>
+                    <li>{{address.postcode}}</li>
+                    <li>{{address.phone}}</li>
+                  </ul>
+                </div>
+
+                <div class="form-section--column">
+                  <h4>Termin odbioru:</h4>
+                  <ul>
+                    <li>{{address.date}}</li>
+                    <li>{{address.hour}}</li>
+                    {%if more_info == None%}
+                    <li>Brak uwag</li>
+                    {%else%}
+                    <li>{{address.more_info}}</li>
+                    {%endif%}
+                  </ul>
+                </div>
+              </div>
+            </div>
+    </form>
+{%endblock content%}

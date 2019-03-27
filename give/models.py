@@ -8,11 +8,11 @@ gift_type={(0,'ubrania, które nadają się do użytku'),
            (3,'kasiążki'),
            (4,'inne')}
 
-institutions={(0,'Dbam o Zdrowie'),
-             (1,'Dla dzieci'),
-             (2,'Bez domu'),
-             (3,'Walka z rakiem "Yasuo mid"'),
-             (4,'Mam marzenie')}
+help={(0,'dzieciom'),
+      (1,'samotnym matkom'),
+      (2,'bezdomnym'),
+      (3,'niepełnosprawnym'),
+      (4,'osobom starszym')}
 
 place={(0,'Niezależne'),
        (1,'Warszawa'),
@@ -22,9 +22,6 @@ place={(0,'Niezależne'),
 
 class Gifts(models.Model):
     type=models.IntegerField(choices=gift_type)
-    quantity=models.IntegerField
-    institution=models.IntegerField(choices=institutions)
-    localization=models.IntegerField(choices=place, default=0)
 
     def __str__(self):
         return self.type, self.institution, self.localization
@@ -37,4 +34,12 @@ class UserAddress(models.Model):
     data=models.DateField()
     hour=models.TimeField
     more_info=models.CharField(blank=True, max_length=255)
-    gift=models.OneToOneField( User , on_delete=models.CASCADE, primary_key=True,)
+    gift=models.OneToOneField( User , on_delete=models.CASCADE, primary_key=True)
+
+class Quantity(models.Model):
+    quantity = models.IntegerField
+
+class Organization():
+    name=models.CharField(max_length=255)
+    city=models.IntegerField(choices=place, default=0)
+    help=models.IntegerField(choices=help ,default=0)

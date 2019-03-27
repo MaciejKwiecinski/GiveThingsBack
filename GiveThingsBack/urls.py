@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from give.views import main,Gifts
+from give.views import main,SignIn
 from django.contrib.auth.views import LoginView,LogoutView
 
 urlpatterns = [
@@ -23,5 +23,6 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('',main),
-    path('main/',Gifts.as_view())
+    # path('main/',Gifts.as_view()),
+    path('signin/',SignIn.as_view())
 ]
