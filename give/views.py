@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
@@ -14,10 +14,10 @@ class SignIn(View):
         return render(request,'register.html')
 
     def post(self,request):
-        login = request.POST['login']
+        name = request.POST['login']
         email = request.POST['email']
         password = request.POST['password']
-        user = User.objects.create(username=login,password=password,email=email)
+        user = User.objects.create(username=name,password=password,email=email)
         login(request, user)
         return redirect('/')
 
@@ -51,26 +51,47 @@ class OrganizationView(View):
     def post(self, request):
         type = request.POST['products']
         organization = Organization.objects.create()
-        request.session['Organizarion_id'] = organization.id
+        request.session['Organization_id'] = organization.id
         return redirect('form5/')
 
 
-class ProducrView(View):
+class AddressView(View):
     def get(self, request):
         return render(request, 'form5.html')
 
     def post(self, request):
-        type = request.POST['products']
-        gift = Gifts.objects.create(type=type)
-        request.session['Product_id'] = gift.id
+        address=request.POST['address']
+        city=request.POST['city']
+        postcode=request.POST['postcode']
+        phone=request.POST['phone']
+        data=request.POST['data']
+        time=request.POST['time']
+        more_info=request.POST['more_info']
+        addresses = UserAddress.objects.create(address=address, city=city,postcode=postcode,phone=phone,data=data,hour=time,more_info=more_info)
+        request.session['Address_id'] = addresses.id
         return redirect('form6/')
 
-class ProducrView(View):
+class EditView(View):
     def get(self, request):
-        return render(request, 'form6.html')
+
+        return render(request, 'form6.html',)
 
     def post(self, request):
         type = request.POST['products']
         gift = Gifts.objects.create(type=type)
         request.session['Product_id'] = gift.id
         return redirect('form/')
+
+def my_view(request):
+    msg=""
+    username = request.POST['nick']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+    else:
+        msg="Brak użytkownika w bazie"
+    return render(request,'index.html',{'msg':msg})
+
+def logout_view(request):
+    logout(request)

@@ -32,9 +32,8 @@ class UserAddress(models.Model):
     postcode=models.IntegerField
     phone=models.IntegerField
     data=models.DateField()
-    hour=models.TimeField
+    hour=models.TimeField()
     more_info=models.CharField(blank=True, max_length=255)
-    gift=models.OneToOneField( User , on_delete=models.CASCADE, primary_key=True)
 
 class Quantity(models.Model):
     quantity = models.IntegerField
