@@ -29,7 +29,7 @@ class ProductView(View):
         type=request.POST['products']
         gift=Gifts.objects.create(type=type)
         request.session['Product_id'] = gift.id
-        return redirect('form2/')
+        return redirect('/form2/')
 
 
 class QuantityView(View):
@@ -38,9 +38,9 @@ class QuantityView(View):
 
     def post(self, request):
         bags = request.POST['bags']
-        bags = Quantity.objects.create(quantity=bags)
-        request.session['Quantity_id'] = bags.id
-        return redirect('form/')
+        bag = Quantity.objects.create(quantity=bags)
+        request.session['Quantity_id'] = bag.id
+        return redirect('/form4/')
 
 
 class OrganizationView(View):
@@ -52,7 +52,7 @@ class OrganizationView(View):
         type = request.POST['products']
         organization = Organization.objects.create()
         request.session['Organization_id'] = organization.id
-        return redirect('form5/')
+        return redirect('/form5/')
 
 
 class AddressView(View):
@@ -69,7 +69,7 @@ class AddressView(View):
         more_info=request.POST['more_info']
         addresses = UserAddress.objects.create(address=address, city=city,postcode=postcode,phone=phone,data=data,hour=time,more_info=more_info)
         request.session['Address_id'] = addresses.id
-        return redirect('form6/')
+        return redirect('/form6/')
 
 class EditView(View):
     def get(self, request):

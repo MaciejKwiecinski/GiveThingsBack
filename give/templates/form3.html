@@ -1,7 +1,11 @@
 {%extends 'baseform.html'%}
 {%block content%}
-    <form method="POST">
-        {%csrf_token%}
+            <div class="form--steps-container">
+        <div class="form--steps-counter">Krok <span>3</span>/5</div>
+    <form method="post">{% csrf_token %}
+
+    <!-- STEP 4 -->
+    <div data-step="1" class="active">
         <h3>Lokalizacja:</h3>
 
             <div class="form-group form-group--dropdown">
@@ -57,5 +61,7 @@
               <button type="button" class="btn prev-step">Wstecz</button>
               <input type="submit" class="btn" value="Potwierdzam">
         </div>
+     </div>
     </form>
+            </div>
 {%endblock content%}

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from give.views import main,SignIn
+from give.views import main,SignIn,ProductView,QuantityView,OrganizationView,AddressView,EditView
 from django.contrib.auth.views import LoginView,LogoutView
 
 urlpatterns = [
@@ -23,6 +23,10 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('',main),
-    # path('main/',Gifts.as_view()),
+    path('form1/',ProductView.as_view()),
+    path('form2/',QuantityView.as_view()),
+    path('form4/',OrganizationView.as_view()),
+    path('form5/',AddressView.as_view()),
+    path('form6/',EditView.as_view()),
     path('signin/',SignIn.as_view())
 ]

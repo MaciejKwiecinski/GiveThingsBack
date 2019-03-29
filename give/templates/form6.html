@@ -1,7 +1,11 @@
 {%extends 'baseform.html'%}
 {%block content%}
-    <form method="POST">
-        {%csrf_token%}
+        <div class="form--steps-container">
+        <div class="form--steps-counter">Krok <span>5</span>/5</div>
+    <form method="post">{% csrf_token %}
+
+    <!-- STEP 4 -->
+    <div data-step="1" class="active">
     <h3>Podsumowanie Twojej darowizny</h3>
             <div class="summary">
               <div class="form-section">
@@ -48,5 +52,7 @@
                 </div>
               </div>
             </div>
+     </div>
     </form>
+        </div>
 {%endblock content%}

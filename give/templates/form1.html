@@ -1,8 +1,11 @@
 {%extends 'baseform.html'%}
 {%block content%}
-    <form method="post">
-        {%csrf_token%}
-        <div class="active">
+        <div class="form--steps-container">
+        <div class="form--steps-counter">Krok <span>1</span>/5</div>
+    <form method="post">{% csrf_token %}
+
+    <!-- STEP 4 -->
+    <div data-step="1" class="active">
             <h3>Zaznacz co chcesz oddać:</h3>
 
             <div class="form-group form-group--checkbox">
@@ -57,5 +60,6 @@
               <input type="submit" class="btn" value="Dalej">
             </div>
           </div>
-
+    </form>
+    </div>
 {%endblock content%}
